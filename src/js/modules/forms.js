@@ -72,7 +72,7 @@ const forms = (state) => {
             // ДЗ
             if (item.getAttribute('data-calc') === 'calc') {
                 for (let key in state) {
-                    FormData.append(key, state[key]);
+                    formData.append(key, state[key]);
                 }
             }
 

@@ -231,7 +231,7 @@
 			<h2>Рассчитайте стоимость и получите скидку 30%</h2>
 			<div class=row>
 				<div class="col-md-4 col-offset-1">
-					<form class='form calc_form' action=# method=POST enctype=multipart/form-data>
+					<form class='form calc_form'>
 						<h4>Загрузите свое фото</h4>
 						<div class=file_upload>
 							<button type=button>Загрузить фотографию</button>
@@ -262,29 +262,29 @@
 						</select>
 						-->
 
-						<select id=size>
+						<select name="orderSize" id=size>
 							<option value >Выберите размер картины</option>
 							<option value='40x50'>40x50</option>
 							<option value='50x70'>50x70</option>
 							<option value='70x70'>70x70</option>
 							<option value='70x100'>70x100</option>
 						</select>
-						<select id=material>
+						<select name="orderMaterial" id=material>
 							<option value>Выберите материал картины</option>
 							<option value='Холст из волокна' title="Изящный, позволяет легко создавать текстуру, подходит для декоративных картин маслом.">Холст из волокна</option>
 							<option value='Льняной холст' title="Достаточно грубый и создает ощущение реальности, подходит для классических пейзажей, натюрмортов и портретов.">Льняной холст</option>
 							<option value='Холст из натурального хлопка' title="Изящный, подходит для всех типов реалистичных портретов.">Холст из натурального хлопка</option>
 						</select>
-						<select id=options>
+						<select name="orderOptions" id=options>
 							<option value>Дополнительные услуги</option>
 							<option value='Покрытие арт-гелем'>Покрытие арт-гелем</option>
 							<option value='Экспресс-изготовление'>Экспресс-изготовление</option>
 							<option value='Доставка готовых работ'>Доставка готовых работ</option>
 						</select>
-
-
-						<input type="text" class="promocode" placeholder="Введите ваш промокод">
-						<div class=calc-price>Для расчета нужно выбрать размер картины и материал картины</div>
+						
+						<input name="orderPromocode" type="text" class="promocode" placeholder="Введите ваш промокод">
+						<!-- <div class=calc-price>Для расчета нужно выбрать размер картины и материал картины</div> -->
+						<input name="result" type="text" class="calc-price" value="0" style='border: 0px;'>
 						<button class="button button-order">Быстрый заказ</button>
 					</form>
 				</div>

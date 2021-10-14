@@ -43,6 +43,13 @@ const calc = (size, material, options, promocode, result) => {
           resultBlock = document.querySelector(result);
 
     let sum = 0, sizeValue = "", materialValie = "0", optionsValue = "0";
+    let state;
+
+    getResource('assets/calcPrice.json')
+        .then(res => {
+            state = res;
+        })
+        .catch(e => console.log(e));
 
     function changePrice(event, elem) {
         elem.addEventListener(event, (e) => {
@@ -50,7 +57,6 @@ const calc = (size, material, options, promocode, result) => {
                   select = target.id;
 
             function calcFunc(state) {
-                console.log(state[select]);
                 for (let key in state[select]) {
                     if (elem.value === key) {
                         switch(select) {
@@ -65,22 +71,19 @@ const calc = (size, material, options, promocode, result) => {
                                 break;
                         }
                     }
-                    console.log(state[select][key]);
+                    // console.log(state[select][key]);
                 }
                 sum = Math.round((+sizeValue) * (+materialValie) + (+optionsValue));
                 if (sizeBlock.value == '' || materialBlock.value == '') {
-                    resultBlock.textContent = "Пожалуйста, выберите размер и материал картины";
+                    resultBlock.value = "Пожалуйста, выберите размер и материал картины";
                 } else if (promocodeBlock.value === 'IWANTPOPART') {
-                    resultBlock.textContent = Math.round(sum * 0.7);
+                    resultBlock.value = Math.round(sum * 0.7);
                 } else {
-                    resultBlock.textContent = sum;
+                    resultBlock.value = sum;
                 }
+                // console.log(resultBlock.value);
             }
-            getResource('../../assets/calcPrice.json')
-            .then(res => {
-                calcFunc(res);
-            })
-            .catch(e => console.log(e));
+            calcFunc(state);
         });
     }
 
